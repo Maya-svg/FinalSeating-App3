@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State var studentName = ""
-  //  @ObservedObject var seatingManager = SeatingManager()
+    @ObservedObject var seatingManager = SeatingManager()
+    
     var body: some View {
         VStack{
             HStack{
@@ -25,10 +26,12 @@ struct ContentView: View {
             HStack{
                 Spacer()
                 TextField("Search Name Here", text: $studentName, onCommit: {
-                    if self.studentName == "" { //if nothing is typed then user is told to type something
+                    if self.studentName == "" {
+                        //if nothing is typed then user is told to type something
                         self.studentName = "Type Something"
                     }else{
-                    
+                        self.seatingManager.fetchingTable(name: self.studentName)
+                        self.studentName = "" 
                     }
                 })
                     .font(.system (size: 25))
@@ -41,7 +44,13 @@ struct ContentView: View {
                 
                 Button(action: {
                     print("Working")
-                    
+                    if self.studentName == "" {
+                        //if nothing is typed then user is told to type something
+                        self.studentName = "Type Something"
+                    }else{
+                        self.seatingManager.fetchingTable(name: self.studentName)
+                        self.studentName = ""
+                    }
                 }) {
                     Text("Search")
                         .font(.system (size: 30))
