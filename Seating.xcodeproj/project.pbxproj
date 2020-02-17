@@ -13,6 +13,7 @@
 		87B1469023FA0CEF004D8848 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B1468F23FA0CEF004D8848 /* Assets.xcassets */; };
 		87B1469323FA0CEF004D8848 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B1469223FA0CEF004D8848 /* Preview Assets.xcassets */; };
 		87B1469623FA0CEF004D8848 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B1469423FA0CEF004D8848 /* LaunchScreen.storyboard */; };
+		87B1469E23FA19D5004D8848 /* SeatingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B1469D23FA19D5004D8848 /* SeatingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		87B1469223FA0CEF004D8848 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		87B1469523FA0CEF004D8848 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B1469723FA0CEF004D8848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87B1469D23FA19D5004D8848 /* SeatingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +60,11 @@
 			children = (
 				87B1468923FA0CE4004D8848 /* AppDelegate.swift */,
 				87B1468B23FA0CE4004D8848 /* SceneDelegate.swift */,
-				87B1468D23FA0CE4004D8848 /* ContentView.swift */,
 				87B1468F23FA0CEF004D8848 /* Assets.xcassets */,
 				87B1469423FA0CEF004D8848 /* LaunchScreen.storyboard */,
 				87B1469723FA0CEF004D8848 /* Info.plist */,
+				87B1468D23FA0CE4004D8848 /* ContentView.swift */,
+				87B1469D23FA19D5004D8848 /* SeatingManager.swift */,
 				87B1469123FA0CEF004D8848 /* Preview Content */,
 			);
 			path = Seating;
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B1468A23FA0CE4004D8848 /* AppDelegate.swift in Sources */,
+				87B1469E23FA19D5004D8848 /* SeatingManager.swift in Sources */,
 				87B1468C23FA0CE4004D8848 /* SceneDelegate.swift in Sources */,
 				87B1468E23FA0CE4004D8848 /* ContentView.swift in Sources */,
 			);
