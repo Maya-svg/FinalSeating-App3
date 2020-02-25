@@ -8,21 +8,24 @@
 //Goal: send someone's name to localhost:80 and return their table (a dictionary) 
 import Foundation
 
+protocol SeatingManagerDelegate {
+    func didUpdateSeating(_ seatingManager: SeatingManager, weather: SeatingModel)
+    func didFailWithError(error: Error)
+}
 class SeatingManager: ObservableObject {
     
     // @Published var table = {} //plublish the table dictionaries
     
-    struct SeatingData: Decodable {
-        let name: String
-    }
     
-    let Url = "http://localhost"
+    let Url = "http://localhost:80"
     
-    func fetchingTable(name: String){
+    var delegate: SeatingManagerDelegate?
+    
+    func fetchTable(name: String){
         let urlSafeSearchName = name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         //inputs that new variable into the official url string
         let urlString = "\(Url)/\(urlSafeSearchName!)" // cityName is self.locationName
-               //url is then used to search for the weather at that location
+        //url is then used to search for the weather at that location
         performRequest(with: urlString)
         print(urlString) 
     }
@@ -45,7 +48,7 @@ class SeatingManager: ObservableObject {
                 }
                 //checks the data we got back
                 if let safeData = data{
-                    self.parseJSON(tableData: safeData)
+                    self.parseJSON(seatingData: safeData)
                     //(safeData turns into a string) let dataString = String(data: safeData, encoding: .utf8) utf8 is the format of the data we get back from the web
                 }
             } //returns a task --- means grabbing the information from the website and bringing it back
@@ -53,8 +56,18 @@ class SeatingManager: ObservableObject {
             task.resume() //this starts the task
         }
     }
-    func parseJSON(tableData: Data){
+    func parseJSON(seatingData: Data){
         let decoder = JSONDecoder()
+        do {
+            let decodedData =  try decoder.decode(SeatingData.self, from: seatingData)
+            let fullName = decodedData.name
+            let tableAt = decodedData.seating
+            let waiting = decodedData.isWaiter
+            
+            let tableSeating = SeatingModel(fullName: fullName, seating: tableAt, waiting: waiting)
         
+        } catch {
+            print(error)
+        }
     }
 }

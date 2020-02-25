@@ -14,6 +14,8 @@
 		87B1469323FA0CEF004D8848 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B1469223FA0CEF004D8848 /* Preview Assets.xcassets */; };
 		87B1469623FA0CEF004D8848 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B1469423FA0CEF004D8848 /* LaunchScreen.storyboard */; };
 		87B1469E23FA19D5004D8848 /* SeatingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B1469D23FA19D5004D8848 /* SeatingManager.swift */; };
+		B43DE75E23FD9B6B00107476 /* SeatingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43DE75D23FD9B6B00107476 /* SeatingData.swift */; };
+		B45C9CAA2403544C00CC9F78 /* SeatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C9CA92403544C00CC9F78 /* SeatingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		87B1469523FA0CEF004D8848 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B1469723FA0CEF004D8848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B1469D23FA19D5004D8848 /* SeatingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatingManager.swift; sourceTree = "<group>"; };
+		B43DE75D23FD9B6B00107476 /* SeatingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatingData.swift; sourceTree = "<group>"; };
+		B45C9CA92403544C00CC9F78 /* SeatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				87B1469723FA0CEF004D8848 /* Info.plist */,
 				87B1468D23FA0CE4004D8848 /* ContentView.swift */,
 				87B1469D23FA19D5004D8848 /* SeatingManager.swift */,
+				B43DE75D23FD9B6B00107476 /* SeatingData.swift */,
+				B45C9CA92403544C00CC9F78 /* SeatingModel.swift */,
 				87B1469123FA0CEF004D8848 /* Preview Content */,
 			);
 			path = Seating;
@@ -150,7 +156,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B1468A23FA0CE4004D8848 /* AppDelegate.swift in Sources */,
+				B43DE75E23FD9B6B00107476 /* SeatingData.swift in Sources */,
 				87B1469E23FA19D5004D8848 /* SeatingManager.swift in Sources */,
+				B45C9CAA2403544C00CC9F78 /* SeatingModel.swift in Sources */,
 				87B1468C23FA0CE4004D8848 /* SceneDelegate.swift in Sources */,
 				87B1468E23FA0CE4004D8848 /* ContentView.swift in Sources */,
 			);
