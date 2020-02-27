@@ -51,31 +51,33 @@ struct ContentView: View {
     }
     
     struct TableView: View{
+        
         @ObservedObject var seatingManager = SeatingManager()
+                
         var body: some View{
             NavigationView{
                 VStack{
                     HStack{
                         Spacer()
-                        Text((seatingManager.studentFirstName + seatingManager.studentLastName))
+                        Text((seatingManager.student1Name))
                             .font(.system (size: 30))
                         Spacer()
-//                        Text("Name 2")
-//                            .font(.system (size: 30))
-//                        Spacer()
+                        Text(seatingManager.student2Name)
+                            .font(.system (size: 30))
+                       Spacer()
                     }
-//                    HStack{
-//                        Spacer()
-//                        VStack{
-//                            Text("Name 3")
-//                                .font(.system (size: 30))
-//                            Spacer()
-//                            Text("Name 4")
-//                                .font(.system (size: 30))
-//                            Spacer()
-//                            Text("Name 5")
-//                                .font(.system (size: 30))
-//                        }
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Text(seatingManager.student3Name)
+                                .font(.system (size: 30))
+                            Spacer()
+                            Text(seatingManager.student4Name)
+                                .font(.system (size: 30))
+                            Spacer()
+                            Text(seatingManager.student5Name)
+                                .font(.system (size: 30))
+                        }
                         Spacer()
                         ZStack{
                             Circle()
@@ -83,30 +85,30 @@ struct ContentView: View {
                             Text(seatingManager.studentTable)
                                 .font(.system (size: 30))
                         }
-//                        VStack{
-//                            Text("Name 6")
-//                                .font(.system (size: 30))
-//                            Spacer()
-//                            Text("Name 7")
-//                                .font(.system (size: 30))
-//                            Spacer()
-//                            Text("Name 8")
-//                                .font(.system (size: 30))
-//                        }
+                        VStack{
+                            Text(seatingManager.student6Name)
+                                .font(.system (size: 30))
+                            Spacer()
+                            Text(seatingManager.student7Name)
+                                .font(.system (size: 30))
+                            Spacer()
+                            Text(seatingManager.student8Name)
+                                .font(.system (size: 30))
+                        }
                         Spacer()
                     }
-//                    HStack{
-//                        Spacer()
-//                        Text("Name 9")
-//                            .font(.system (size: 30))
-//                        Spacer()
-//                        Text("Optional Name 10")
-//                            .font(.system (size: 30))
-//                        Spacer()
-//                    }
+                    HStack{
+                        Spacer()
+                        Text(seatingManager.waiterName)
+                            .font(.system (size: 30))
+                        Spacer()
+                        Text(seatingManager.student10Name)
+                            .font(.system (size: 30))
+                        Spacer()
+                    }
                     VStack{
                         Spacer()
-                        Text(seatingManager.studentWaiter)
+                        Text(seatingManager.waiterName+seatingManager.studentWaiter)
                         Spacer()
                         Text("Enjoy Your Meal!")
                             .font(.system (size: 30))
@@ -122,5 +124,5 @@ struct ContentView: View {
             ContentView()
         }
     }
-//}
+}
 

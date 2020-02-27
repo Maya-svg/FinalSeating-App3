@@ -17,8 +17,16 @@
 import Foundation
 
 class SeatingManager: ObservableObject {
-    @Published var studentFirstName = "Name 1"
-    @Published var studentLastName = "Name 1"
+    @Published var student1Name = "Name 1"
+    @Published var student2Name = "Name 2"
+    @Published var student3Name = "Name 3"
+    @Published var student4Name = "Name 4"
+    @Published var student5Name = "Name 5"
+    @Published var student6Name = "Name 6"
+    @Published var student7Name = "Name 7"
+    @Published var student8Name = "Name 8"
+    @Published var waiterName = "Name 9"
+    @Published var student10Name = "Name 10"
     @Published var studentTable = "Table"
     @Published var studentWaiter = "No"
     
@@ -46,7 +54,7 @@ class SeatingManager: ObservableObject {
             let task = session.dataTask(with: url) /*takes a function as an input*/ { ( data, response, error)  in //this is a closure
                 // the task triggers this function --- if there is a problem we are notified.
                 if error != nil {
-                    print(error!)
+                    print("Error with GET: \(error!)")
                     return // stops fuction
                 }
                 //checks the data we got back
@@ -63,19 +71,36 @@ class SeatingManager: ObservableObject {
         let decoder = JSONDecoder()
         do {
             let decodedData =  try decoder.decode(SeatingData.self, from: seatingData)
-            let firstName = decodedData.firstName
-            let lastName = decodedData.lastName
-            let tableAt = decodedData.seating
-            let waiting = decodedData.isWaiter
-            
-            let tableSeating = SeatingModel(firstName: firstName, lastName: lastName, seating: tableAt, waiting: waiting)
-            studentFirstName = tableSeating.firstName
-            studentLastName = tableSeating.lastName
-            studentTable = tableSeating.seating
-            studentWaiter = tableSeating.waiting
+            let name1 = decodedData.student1.name
+            let name2 = decodedData.student2.name
+            let name3 = decodedData.student3.name
+            let name4 = decodedData.student4.name
+            let name5 = decodedData.student5.name
+            let name6 = decodedData.student6.name
+            let name7 = decodedData.student7.name
+            let name8 = decodedData.student8.name
+            let name9 = decodedData.student9.name
+            let name10 = decodedData.student10.name
+            let tableAt = decodedData.student1.seating
+            DispatchQueue.main.async {
+                    let tableSeating = SeatingModel(student1: name1, student2: name2, student3: name3, student4: name4, student5: name5, student6: name6, student7: name7, student8: name8, waiter: name9, student10: name10, table: tableAt)
+                    self.student1Name = tableSeating.student1
+                    self.student2Name = tableSeating.student2
+                    self.student3Name = tableSeating.student3
+                    self.student4Name = tableSeating.student4
+                    self.student5Name = tableSeating.student5
+                    self.student6Name = tableSeating.student6
+                    self.student7Name = tableSeating.student7
+                    self.student8Name = tableSeating.student8
+                    self.student10Name = tableSeating.student10
+                    self.studentTable = tableSeating.table
+                    self.studentWaiter = tableSeating.waiter
+                
+                print("Updated studentnNames!")
+            }
             
         } catch {
-            print(error)
+            print("JSON decode \(error)")
         }
     }
 }
