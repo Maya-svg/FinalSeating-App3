@@ -43,7 +43,7 @@ struct ContentView: View {
             .navigationBarTitle(Text("Formal Dinner Seating"))
             .font(.system (size: 50))
             .navigationBarItems(trailing:
-                NavigationLink(destination: TableView()) {
+                NavigationLink(destination: TableView(seatingManager: self.seatingManager)) {
                     Text("View Table") //move this to middle of app
                 }
             )
@@ -52,7 +52,8 @@ struct ContentView: View {
     
     struct TableView: View{
         
-        @ObservedObject var seatingManager = SeatingManager()
+        @ObservedObject var seatingManager: SeatingManager
+        //@ObservedObject var seatingManager = SeatingManager()
                 
         var body: some View{
             NavigationView{
@@ -99,7 +100,7 @@ struct ContentView: View {
                     }
                     HStack{
                         Spacer()
-                        Text(seatingManager.waiterName)
+                        Text(seatingManager.studentWaiter)
                             .font(.system (size: 30))
                         Spacer()
                         Text(seatingManager.student10Name)
@@ -108,7 +109,9 @@ struct ContentView: View {
                     }
                     VStack{
                         Spacer()
-                        Text(seatingManager.waiterName+seatingManager.studentWaiter)
+                        Text("Waiter")
+                        Spacer()
+                        Text(seatingManager.studentWaiter)
                         Spacer()
                         Text("Enjoy Your Meal!")
                             .font(.system (size: 30))
