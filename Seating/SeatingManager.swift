@@ -8,11 +8,11 @@
 //Goal: send someone's name to localhost:80 and return their table (a dictionary) 
 import Foundation
 
-protocol SeatingManagerDelegate {
-    func didUpdateSeating(_ seatingManager: SeatingManager, tableSeating: SeatingModel)
-    
-}
+
 class SeatingManager: ObservableObject {
+    @Published var studentName = "Name 1"
+    @Published var studentTable = "Table"
+    @Published var studentWaiter = "No"
     
     // @Published var table = {} //plublish the table dictionaries
     
@@ -54,7 +54,7 @@ class SeatingManager: ObservableObject {
             task.resume() //this starts the task
         }
     }
-    func parseJSON(seatingData: Data)-> SeatingModel?{
+    func parseJSON(seatingData: Data){
         let decoder = JSONDecoder()
         do {
             let decodedData =  try decoder.decode(SeatingData.self, from: seatingData)
@@ -63,10 +63,12 @@ class SeatingManager: ObservableObject {
             let waiting = decodedData.isWaiter
             
             let tableSeating = SeatingModel(fullName: fullName, seating: tableAt, waiting: waiting)
-             return tableSeating
+            studentName = tableSeating.fullName
+            studentTable = tableSeating.seating
+            studentWaiter = tableSeating.waiting
+            
         } catch {
             print(error)
-            return nil
         }
     }
 }

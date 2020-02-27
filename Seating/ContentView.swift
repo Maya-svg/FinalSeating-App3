@@ -51,12 +51,13 @@ struct ContentView: View {
     }
     
     struct TableView: View{
+        @ObservedObject var seatingManager = SeatingManager()
         var body: some View{
             NavigationView{
                 VStack{
                     HStack{
                         Spacer()
-                        Text("Name 1")
+                        Text(seatingManager.studentName)
                             .font(.system (size: 30))
                         Spacer()
                         Text("Name 2")
@@ -123,18 +124,3 @@ struct ContentView: View {
     }
 }
 
-extension ContentView: SeatingManagerDelegate {
-
-  
-    func didUpdateSeating(_ seatingManager: SeatingManager, tableSeating: SeatingModel){
-      DispatchQueue.main.async {
-          
-         // sets labels as data extracted from WeatherManager
-          
-         
-          // converts sunset time and sunrise time from unix in UTC to Local time.
-          
-      }
-      // sets labels as data extracted from NSDataConverter
-  }
-}
