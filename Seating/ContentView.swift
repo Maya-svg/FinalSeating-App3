@@ -57,56 +57,56 @@ struct ContentView: View {
                 VStack{
                     HStack{
                         Spacer()
-                        Text(seatingManager.studentName)
+                        Text((seatingManager.studentFirstName + seatingManager.studentLastName))
                             .font(.system (size: 30))
                         Spacer()
-                        Text("Name 2")
-                            .font(.system (size: 30))
-                        Spacer()
+//                        Text("Name 2")
+//                            .font(.system (size: 30))
+//                        Spacer()
                     }
-                    HStack{
-                        Spacer()
-                        VStack{
-                            Text("Name 3")
-                                .font(.system (size: 30))
-                            Spacer()
-                            Text("Name 4")
-                                .font(.system (size: 30))
-                            Spacer()
-                            Text("Name 5")
-                                .font(.system (size: 30))
-                        }
+//                    HStack{
+//                        Spacer()
+//                        VStack{
+//                            Text("Name 3")
+//                                .font(.system (size: 30))
+//                            Spacer()
+//                            Text("Name 4")
+//                                .font(.system (size: 30))
+//                            Spacer()
+//                            Text("Name 5")
+//                                .font(.system (size: 30))
+//                        }
                         Spacer()
                         ZStack{
                             Circle()
                                 .foregroundColor(.blue)
-                            Text("TableNumber")
+                            Text(seatingManager.studentTable)
                                 .font(.system (size: 30))
                         }
-                        VStack{
-                            Text("Name 6")
-                                .font(.system (size: 30))
-                            Spacer()
-                            Text("Name 7")
-                                .font(.system (size: 30))
-                            Spacer()
-                            Text("Name 8")
-                                .font(.system (size: 30))
-                        }
+//                        VStack{
+//                            Text("Name 6")
+//                                .font(.system (size: 30))
+//                            Spacer()
+//                            Text("Name 7")
+//                                .font(.system (size: 30))
+//                            Spacer()
+//                            Text("Name 8")
+//                                .font(.system (size: 30))
+//                        }
                         Spacer()
                     }
-                    HStack{
-                        Spacer()
-                        Text("Name 9")
-                            .font(.system (size: 30))
-                        Spacer()
-                        Text("Optional Name 10")
-                            .font(.system (size: 30))
-                        Spacer()
-                    }
+//                    HStack{
+//                        Spacer()
+//                        Text("Name 9")
+//                            .font(.system (size: 30))
+//                        Spacer()
+//                        Text("Optional Name 10")
+//                            .font(.system (size: 30))
+//                        Spacer()
+//                    }
                     VStack{
                         Spacer()
-                        Text("Your waiter is:")
+                        Text(seatingManager.studentWaiter)
                         Spacer()
                         Text("Enjoy Your Meal!")
                             .font(.system (size: 30))
@@ -122,5 +122,5 @@ struct ContentView: View {
             ContentView()
         }
     }
-}
+//}
 

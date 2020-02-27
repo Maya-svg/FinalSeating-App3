@@ -9,7 +9,8 @@
 import Foundation
 
 struct SeatingModel {
-    let fullName: String
+    let firstName: String
+    let lastName: String 
     let seating: String
     let waiting: String
 }

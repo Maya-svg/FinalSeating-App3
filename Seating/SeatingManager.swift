@@ -5,24 +5,29 @@
 //  Created by Maya Fenelon on 2/16/20.
 //  Copyright © 2020 Maya Fenelon. All rights reserved.
 //
-//Goal: send someone's name to localhost:80 and return their table (a dictionary) 
+//Goal: send someone's name to localhost:80 and return their table (a dictionary)
+
+/*
+ TODO:
+ - Make Swift able to unmarshal JSON by telling it the key names
+ - Error handling:
+    - Python needs to see if there's gonna be an error and return an error message
+    - Swift needs to check if it received an error and print it accordingly.
+ */
 import Foundation
 
-
 class SeatingManager: ObservableObject {
-    @Published var studentName = "Name 1"
+    @Published var studentFirstName = "Name 1"
+    @Published var studentLastName = "Name 1"
     @Published var studentTable = "Table"
     @Published var studentWaiter = "No"
     
-    // @Published var table = {} //plublish the table dictionaries
-    
-    
-    let Url = "https://localhost:80"
+    let url = "http://localhost:80"
     
     func fetchTable(name: String){
         let urlSafeSearchName = name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         //inputs that new variable into the official url string
-        let urlString = "\(Url)/\(urlSafeSearchName!)" // cityName is self.locationName
+        let urlString = "\(url)/\(urlSafeSearchName!)" // cityName is self.locationName
         //url is then used to search for the weather at that location
         performRequest(with: urlString)
         print(urlString) 
@@ -58,12 +63,14 @@ class SeatingManager: ObservableObject {
         let decoder = JSONDecoder()
         do {
             let decodedData =  try decoder.decode(SeatingData.self, from: seatingData)
-            let fullName = decodedData.name
+            let firstName = decodedData.firstName
+            let lastName = decodedData.lastName
             let tableAt = decodedData.seating
             let waiting = decodedData.isWaiter
             
-            let tableSeating = SeatingModel(fullName: fullName, seating: tableAt, waiting: waiting)
-            studentName = tableSeating.fullName
+            let tableSeating = SeatingModel(firstName: firstName, lastName: lastName, seating: tableAt, waiting: waiting)
+            studentFirstName = tableSeating.firstName
+            studentLastName = tableSeating.lastName
             studentTable = tableSeating.seating
             studentWaiter = tableSeating.waiting
             

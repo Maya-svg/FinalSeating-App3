@@ -9,7 +9,8 @@
 import Foundation
 
 struct SeatingData: Codable {
-    let name: String
+    let firstName: String
+    let lastName: String 
     let seating: String
     let isWaiter: String
 }
