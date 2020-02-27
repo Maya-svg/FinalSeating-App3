@@ -9,17 +9,15 @@
 import Foundation
 
 protocol SeatingManagerDelegate {
-    func didUpdateSeating(_ seatingManager: SeatingManager, weather: SeatingModel)
-    func didFailWithError(error: Error)
+    func didUpdateSeating(_ seatingManager: SeatingManager, tableSeating: SeatingModel)
+    
 }
 class SeatingManager: ObservableObject {
     
     // @Published var table = {} //plublish the table dictionaries
     
     
-    let Url = "http://localhost:80"
-    
-    var delegate: SeatingManagerDelegate?
+    let Url = "https://localhost:80"
     
     func fetchTable(name: String){
         let urlSafeSearchName = name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
@@ -48,7 +46,7 @@ class SeatingManager: ObservableObject {
                 }
                 //checks the data we got back
                 if let safeData = data{
-                    self.parseJSON(seatingData: safeData)
+                self.parseJSON(seatingData: safeData)
                     //(safeData turns into a string) let dataString = String(data: safeData, encoding: .utf8) utf8 is the format of the data we get back from the web
                 }
             } //returns a task --- means grabbing the information from the website and bringing it back
@@ -56,7 +54,7 @@ class SeatingManager: ObservableObject {
             task.resume() //this starts the task
         }
     }
-    func parseJSON(seatingData: Data){
+    func parseJSON(seatingData: Data)-> SeatingModel?{
         let decoder = JSONDecoder()
         do {
             let decodedData =  try decoder.decode(SeatingData.self, from: seatingData)
@@ -65,9 +63,10 @@ class SeatingManager: ObservableObject {
             let waiting = decodedData.isWaiter
             
             let tableSeating = SeatingModel(fullName: fullName, seating: tableAt, waiting: waiting)
-        
+             return tableSeating
         } catch {
             print(error)
+            return nil
         }
     }
 }

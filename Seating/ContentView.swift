@@ -122,3 +122,19 @@ struct ContentView: View {
         }
     }
 }
+
+extension ContentView: SeatingManagerDelegate {
+
+  
+    func didUpdateSeating(_ seatingManager: SeatingManager, tableSeating: SeatingModel){
+      DispatchQueue.main.async {
+          
+         // sets labels as data extracted from WeatherManager
+          
+         
+          // converts sunset time and sunrise time from unix in UTC to Local time.
+          
+      }
+      // sets labels as data extracted from NSDataConverter
+  }
+}
