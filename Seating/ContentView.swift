@@ -3,18 +3,18 @@ import SwiftUI
 struct ContentView: View {
     @State var studentName = ""
     @ObservedObject var seatingManager = SeatingManager()
-    @State var visual = true
-    var newArray = {}
     
     var body: some View {
         NavigationView {
             HStack{
                 Spacer()
-                //fix the TextField
+// Code for the TextField
                 TextField("Search Name Here", text: $studentName, onCommit: {
+                    // user is told to write something in the textfield if the studentName variable is empty
                     if self.studentName == "" {
                         self.studentName = "Type Something"
                     }else{
+                        //if a name is written it is used to create the url through the fetchTable function in the seatingManager.
                         self.seatingManager.fetchTable(name: self.studentName)
                         self.studentName = ""
                     }
@@ -25,12 +25,14 @@ struct ContentView: View {
                     .aspectRatio(30, contentMode: .fit)
                     .frame(maxWidth: 500, maxHeight: 150)
                 Spacer()
-                
+
+// Code for search button
                 Button(action: {
                     if self.studentName == "" {
-                        //if nothing is typed then user is told to type something
+                        // user is told to write something in the textfield if the studentName variable is empty
                         self.studentName = "Type Something"
                     }else{
+                        // clicking the search button sends the typed name to the fetchTable function in the seatingManager.
                         self.seatingManager.fetchTable(name: self.studentName)
                         self.studentName = ""
                     }
@@ -43,6 +45,7 @@ struct ContentView: View {
             .navigationBarTitle(Text("Formal Dinner Seating"))
             .font(.system (size: 50))
             .navigationBarItems(trailing:
+                // The NavigationLink changes the view from the homescreen to the table viewing screen
                 NavigationLink(destination: TableView(seatingManager: self.seatingManager)) {
                     Text("View Table") //move this to middle of app
                 }
@@ -51,12 +54,12 @@ struct ContentView: View {
     }
     
     struct TableView: View{
-        
+        // Code for the second screen view--- where you see all the people at your table
         @ObservedObject var seatingManager: SeatingManager
-        //@ObservedObject var seatingManager = SeatingManager()
-                
+        
         var body: some View{
             NavigationView{
+              // below is the arrangement of all the people at the formal table.
                 VStack{
                     HStack{
                         Spacer()
@@ -80,7 +83,7 @@ struct ContentView: View {
                                 .font(.system (size: 30))
                         }
                         Spacer()
-                        ZStack{
+                        ZStack{ //the table number is written in this ZStack
                             Circle()
                                 .foregroundColor(.blue)
                             Text(seatingManager.studentTable)
@@ -100,18 +103,17 @@ struct ContentView: View {
                     }
                     HStack{
                         Spacer()
-                        Text(seatingManager.studentWaiter)
-                            .font(.system (size: 30))
-                        Spacer()
                         Text(seatingManager.student10Name)
                             .font(.system (size: 30))
                         Spacer()
                     }
                     VStack{
                         Spacer()
-                        Text("Waiter")
-                        Spacer()
-                    Text(seatingManager.studentWaiter)
+                        // the waiter of the table is written here
+                        Text("Waiter: ")
+                            .font(.system (size: 30))
+                        Text(seatingManager.studentWaiter)
+                            .font(.system (size: 30))
                         Spacer()
                         Text("Enjoy Your Meal!")
                             .font(.system (size: 30))
