@@ -111,7 +111,7 @@ struct ContentView: View {
                         Spacer()
                         Text("Waiter")
                         Spacer()
-                        Text(seatingManager.studentWaiter)
+                    Text(seatingManager.studentWaiter)
                         Spacer()
                         Text("Enjoy Your Meal!")
                             .font(.system (size: 30))
