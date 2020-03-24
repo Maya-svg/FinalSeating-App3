@@ -30,7 +30,7 @@ class SeatingManager: ObservableObject {
     @Published var studentTable = "Table"
     @Published var studentWaiter = "No"
     
-    let url = "http://localhost:80"
+    let url = "http://ec2-54-153-13-70.us-west-1.compute.amazonaws.com"
     
     func fetchTable(name: String){
         let urlSafeSearchName = name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
